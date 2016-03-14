@@ -1,0 +1,50 @@
+{
+  "revision_id": "484bc6c94b435cfe1d14e3dc76fca38d3029315dc9ed069ed681c510ee448ea4",
+  "name": "stunnel",
+  "run_list": [
+    "recipe[stunnel::default]"
+  ],
+  "cookbook_locks": {
+    "stunnel": {
+      "version": "2.2.0",
+      "identifier": "259821eff13ea27526660e7cbaec5c2c7172d73f",
+      "dotted_decimal_identifier": "10581845665201826.32974792046721772.101345951668031",
+      "source": ".",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "453f38e48236b869152cead96a6d1f1897ab2217",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/HEAD -> origin/master",
+          "origin/generic_cleanup",
+          "origin/master"
+        ]
+      },
+      "source_options": {
+        "path": "."
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "stunnel",
+        ">= 0.0.0"
+      ]
+    ],
+    "dependencies": {
+      "stunnel (2.2.0)": [
+
+      ]
+    }
+  }
+}

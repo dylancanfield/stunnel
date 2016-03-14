@@ -3,14 +3,12 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
+  name: policyfile_zero
 
 platforms:
   - name: ubuntu-12.04
-    run_list:
-      - recipe[ubuntu]
-      - recipe[apt]
-  - name: centos-6.4
+  - name: centos-6.5
+  - name: centos-7.2
 
 suites:
   - name: default
