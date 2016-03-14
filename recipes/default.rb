@@ -12,17 +12,30 @@ if(node[:stunnel][:use_chroot])
   end
 end
 
-unless(node.platform_family == 'debian')
-  user 'stunnel4' do
-    home '/var/run/stunnel4'
-    system true
-    shell '/bin/false'
-    supports :manage_home => true
-  end
-  cookbook_file '/etc/init.d/stunnel4' do
-    source 'stunnel4'
-    mode 0755
-  end
+user 'stunnel4' do
+  home '/var/run/stunnel4'
+  system true
+  shell '/bin/false'
+  supports :manage_home => true
+  not_if { node['platform_family'] == 'debian' }
+end
+
+template '/etc/init.d/stunnel4' do
+  source 'sysvinit/stunnel4.erb'
+  user 'root'
+  group 'root'
+  mode 0755
+  not_if { node['platform_family'] == 'debian' }
+  only_if { IO.read('/proc/1/comm').strip == 'init' }
+ end
+
+cookbook_file '/etc/systemd/system/stunnel4.service' do
+  source 'systemd/stunnel4.service'
+  mode 0644
+  user 'root'
+  group 'root'
+  not_if { node['platform_family'] == 'debian' }
+  only_if { IO.read('/proc/1/comm').strip == 'systemd' }
 end
 
 ruby_block 'stunnel.conf notifier' do
@@ -44,7 +57,7 @@ template "/etc/default/stunnel4" do
   mode 0644
 end
 
-service "stunnel" do
+service "stunnel4" do
   service_name node[:stunnel][:service_name]
   supports :restart => true, :reload => true
   action [ :enable, :start ]

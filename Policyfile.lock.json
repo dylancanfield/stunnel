@@ -1,5 +1,5 @@
 {
-  "revision_id": "f810ec38eecd642306f49d84050d9c0270cb963c72bbcd359a85b91c1b883323",
+  "revision_id": "51a0e74dc41f7d790f262adef745c8e2c626547f9c8ae79963f09810ab27b4d0",
   "name": "stunnel",
   "run_list": [
     "recipe[stunnel::default]"
@@ -7,19 +7,20 @@
   "cookbook_locks": {
     "stunnel": {
       "version": "2.2.0",
-      "identifier": "4a2ebad64d5322483e7910b7514bd97ebd22802f",
-      "dotted_decimal_identifier": "20880528270775074.20334888015581515.239138362261551",
+      "identifier": "07c43a2b8f613871f94752c84a9f88a703a5fc6a",
+      "dotted_decimal_identifier": "2186078954938680.32080757095156383.150250902125674",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": null,
-        "revision": "8a48ce029dc72fcd1300302f16b0e6634937ff33",
-        "working_tree_clean": true,
+        "revision": "bb66a6059ccb1404a1c5465c0564121a2a61f1a3",
+        "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
           "origin/HEAD -> origin/master",
-          "origin/master"
+          "origin/master",
+          "origin/serverspec"
         ]
       },
       "source_options": {
