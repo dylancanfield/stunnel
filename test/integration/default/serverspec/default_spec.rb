@@ -1,20 +1,29 @@
-require 'serverspec'
-require 'net/http'
-require 'uri'
+require 'spec_helper'
 
-include Serverspec::Helper::Exec
-include Serverspec::Helper::DetectOS
+describe 'stunnel::default' do
 
-RSpec.configure do |c|
-  c.before :all do
-    c.path = '/sbin:/usr/sbin'
+  case os[:family]
+  when 'debian', 'ubuntu'
+    package_name = 'stunnel4'
+  else
+    package_name = 'stunnel'
   end
-end
 
-describe "Stunnel Client" do
-  it "returns an nginx reponse" do
-    uri = URI('http://localhost:9090')
-    response = Net::HTTP.get_response(uri)
-    expect(response.to_hash['server'].first).to match(/nginx/)
+  describe package(package_name) do
+    it 'is installed' do
+      expect(subject).to be_installed
+    end
   end
+
+  %w(/etc/stunnel/stunnel.conf /etc/default/stunnel4).each do |f|
+  describe file(f) do
+      it { is_expected.to exist }
+      it { is_expected.to be_file }
+      its(:size) { is_expected.to be > 0 }
+      it { is_expected.to be_owned_by('root') }
+      it { is_expected.to be_grouped_into('root') }
+      it { is_expected.to be_mode(644) }
+  end
+  end
+
 end
