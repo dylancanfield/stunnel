@@ -1,0 +1,25 @@
+Style/FileName:
+  Exclude:
+    - 'Policyfile.rb'
+
+Style/SpaceBeforeFirstArg:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+Metrics/LineLength:
+  Max: 90
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/MethodLength:
+  Max: 20
+
+AllCops:
+  Exclude:
+    - 'files/default/vendor/**/*'
