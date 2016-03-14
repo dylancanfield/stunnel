@@ -110,6 +110,5 @@ it 'should delete stunnel_connection haproxy_ssl' do
 end
 ```
 
-## Infos
-* Repository: https://github.com/hw-cookbooks/stunnel
-* IRC: Freenode @ #heavywater
+## Info
+* Repository: https://github.com/dylancanfield/stunnel
