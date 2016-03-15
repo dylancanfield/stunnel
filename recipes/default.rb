@@ -65,3 +65,17 @@ service "stunnel4" do
     node[:stunnel][:services].empty?
   end
 end
+
+directory 'stunnel_log_dir' do
+  path Pathname.new(node['stunnel']['output']).dirname.to_s
+  action :create
+  only_if { node['stunnel']['output'] }
+end
+
+file 'stunnel_log_file' do
+  path node['stunnel']['output']
+  action :create_if_missing
+  user node['stunnel']['user']
+  group node['stunnel']['group']
+  only_if { node['stunnel']['output'] }
+end
